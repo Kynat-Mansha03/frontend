@@ -5,29 +5,28 @@ import "./confirmPassChange.css";
 
 const ConfirmPassChange = () => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const navigate = useNavigate();
 
-  const handleReset = async (event) => {
+  const handleConfirm = async (event) => {
     event.preventDefault();
     try {
-      // Send a request to your backend API to handle password reset
+      // Send a request to your backend API to verify email
       const response = await axios.post(
-        "http://localhost:8081/api/reset-password",
+        "http://localhost:8081/api/passChangeConfirm",
         {
           email,
-          username,
+          name,
         }
       );
 
-      // Handle success: show confirmation message and navigate back to login
-      console.log("Password reset request sent:", response.data);
-      alert("Password reset request sent! Check your email."); // Notify the user
-      navigate("/login"); // Navigate back to the login page after successful reset
+      // If email verification is successful, navigate to reset password page
+      console.log("Email verification successful:", response.data);
+      navigate("/reset-password", { state: { email } });
     } catch (error) {
       // Handle error: show error message to the user
-      console.error("Password reset request failed:", error.response.data);
-      alert("Password reset request failed. Please try again.");
+      console.error("Email verification failed:", error.response.data);
+      alert("Email verification failed. Please try again.");
     }
   };
 
@@ -36,7 +35,7 @@ const ConfirmPassChange = () => {
       <div className="login">
         <div className="form-container">
           <p className="title">Reset Password</p>
-          <form className="form" onSubmit={handleReset}>
+          <form className="form" onSubmit={handleConfirm}>
             <div className="input-group">
               <label htmlFor="email">Email</label>
               <input
@@ -49,13 +48,13 @@ const ConfirmPassChange = () => {
               />
             </div>
             <div className="input-group">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username">name</label>
               <input
                 type="text"
-                name="username"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                name="name"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
             </div>
@@ -65,7 +64,7 @@ const ConfirmPassChange = () => {
               </a>
             </div>
             <button className="sign" type="submit">
-              Reset Password
+              Confirm
             </button>
           </form>
         </div>

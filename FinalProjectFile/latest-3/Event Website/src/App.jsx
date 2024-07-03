@@ -7,8 +7,8 @@ import Login from "./Front-end/Login_Signup/Login";
 import Signup from "./Front-end/Login_Signup/Signup";
 import "./App.css";
 import Describe from "./Front-end/Decsribe/Describe.jsx";
-import ChangePass from "./Front-end/Login_Signup/confirmPassChange.jsx";
 import ConfirmPassChange from "./Front-end/Login_Signup/confirmPassChange.jsx";
+import ResetPassword from "./Front-end/Login_Signup/Reset.jsx";
 
 //created a routing path into the application
 //calling the header which uses the link to navigate to the different pages through route paths
@@ -26,6 +26,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/describe" element={<Describe />} />
             <Route path="/confirmPassChange" element={<ConfirmPassChange />} />
+            <Route path="/reset" element={<ResetPassword />} />
           </Routes>
         </div>
         <Footer />

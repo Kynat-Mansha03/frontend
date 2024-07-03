@@ -26,7 +26,7 @@ router.post(
 
 router.post("/changePass/confirm", SchemaController.passChangeConfirm);
 
-router.post("/passchange/update", SchemaController.passChangeUpdate);
+router.post("/reset", SchemaController.passChangeUpdate);
 
 router.get("/myevents/:organizerId", SchemaController.getEventsByOrganizerId);
 

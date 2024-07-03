@@ -156,19 +156,23 @@ const SignUp = async (req, res, next) => {
 
 const passChangeConfirm = async (req, res, next) => {
   try {
-    const { email, username } = req.body;
-    console.log("Password Reset Confirmation:", email, username);
+    const { email, name } = req.body;
+    console.log("Password Reset Confirmation:", email, name);
 
     // Check if user with the given email exists
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email, name });
 
     if (!user) {
-      return res.status(404).json({ error: "No user found with this email" });
+      return res
+        .status(404)
+        .json({ error: "No user found with this email and name" });
     }
 
     // Optionally, you can send a verification email or confirmation here
-
-    res.json({ message: "Password reset confirmation sent" });
+    res.json({
+      message: "Email verified. You can now reset your password.",
+      email,
+    });
   } catch (err) {
     next(err);
   }
@@ -178,6 +182,8 @@ const passChangeUpdate = async (req, res, next) => {
   try {
     const { email, newPassword } = req.body;
     console.log("Password Update:", email, newPassword);
+
+    // Hash the new password before saving it to the database
 
     // Update the user's password in the database
     const updatedUser = await User.findOneAndUpdate(
