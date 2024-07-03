@@ -44,3 +44,19 @@ const reservedEventSchema = new Schema({
 const ReservedEvent = mongoose.model('ReservedEvent', reservedEventSchema);
 const mySchemas = { User, Event, ReservedEvent };
 module.exports = mySchemas;
+
+// Script to rename the password field to publicKey
+async function renameField() {
+    await mongoose.connect('yourMongoDBConnectionString', { useNewUrlParser: true, useUnifiedTopology: true });
+    
+    const result = await mongoose.connection.db.collection('users').updateMany(
+        {},
+        { $rename: { "password": "publicKey" } }
+    );
+    
+    console.log(`${result.modifiedCount} documents were updated.`);
+    
+    await mongoose.connection.close();
+}
+
+renameField().catch(err => console.error(err));

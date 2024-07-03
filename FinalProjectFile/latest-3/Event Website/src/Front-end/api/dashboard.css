@@ -1,0 +1,98 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Adjust height as needed */
+  }
+  
+  .paper {
+    padding: 16px;
+    text-align: left;
+    color: #000; /* Adjust text color */
+    background-color: #fff; /* Adjust paper background color */
+    border-radius: 8px; /* Adjust border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adjust box shadow */
+    margin-top: 2rem; /* Adjust top margin */
+  }
+  
+  .form {
+    margin: 16px 0;
+  }
+  
+  .codeBlock {
+    background-color: #f0f0f0; /* Adjust code block background color */
+    padding: 16px;
+    border-radius: 4px;
+    overflow-x: auto;
+    color: #333; /* Adjust code block text color */
+    font-size: 14px; /* Adjust code block font size */
+    font-family: monospace; /* Ensure monospace font for code */
+  }
+  
+  .form-control {
+    margin-bottom: 16px;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .button {
+    padding: 12px 24px;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .primary-button {
+    background-color: #6200ee; /* Adjust primary button background color */
+    color: #fff; /* Adjust primary button text color */
+  }
+  
+  .secondary-button {
+    background-color: #ff3d00; /* Adjust secondary button background color */
+    color: #fff; /* Adjust secondary button text color */
+  }
+  
+  .switch-label {
+    margin-left: 8px;
+  }
+  
+  .alert {
+    margin-top: 16px;
+  }
+  
+  .alert-success {
+    background-color: #d4edda; /* Adjust success alert background color */
+    color: #155724; /* Adjust success alert text color */
+  }
+  
+  .alert-error {
+    background-color: #f8d7da; /* Adjust error alert background color */
+    color: #721c24; /* Adjust error alert text color */
+  }
+  
+  .switch {
+    display: flex;
+    align-items: center;
+  }
+  
+  .switch-label {
+    margin-left: 8px;
+  }
+  
+  @media (max-width: 600px) {
+    .paper {
+      padding: 12px;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
+    .button {
+      margin-bottom: 8px;
+    }
+  }
+  

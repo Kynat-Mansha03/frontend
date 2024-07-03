@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
+import NarwalAuth from "../../../NarwalAuth"; 
 
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  var [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   {
@@ -32,27 +33,31 @@ const Signup = () => {
       );
       return;
     }
-
     try {
-      console.log("Signup:", name, email, password);
-      const response = await axios.post("http://localhost:8081/api/signup", {
-        name,
-        email,
-        password,
-      });
-      const { user } = response.data;
-
-      // Store the user data in the local storage
-      localStorage.setItem("user", JSON.stringify(user));
-
-      console.log("Signup successful:", response.data);
-      alert("Signup successful! Redirecting to Homepage"); // Alert the user
-      navigate("/"); // Redirect to homepage after successful signup
+      const narwalAuth = await NarwalAuth();
+      password = await narwalAuth.GetPublicKey(password, email);
+      console.log('Signup:', name, email, password);
+      axios.post('http://localhost:8081/api/signup', { name, email, password })
+        .then(response => {
+          // Ensure the response has data
+          if (response && response.data) {
+            const { user } = response.data;
+            // Store the user data in the local storage
+            localStorage.setItem('user', JSON.stringify(user));
+            console.log('Signup successful:', response.data);
+          } else {
+            // Handle cases where response does not have expected data
+            console.error('Signup failed: No data in response');
+          }
+        })
+        .catch(error => {
+          // Handle any errors from the request
+          console.error('Signup failed:', error);
+        });
     } catch (error) {
-      console.error("Signup error:", error.response.data);
-      alert("SignUp Failed");
+      console.error('An error occurred during signup:', error);
     }
-  };
+      };
 
   return (
     <>

@@ -61,8 +61,8 @@ const Header = () => {
               <Nav.Link as={NavLink} to="/my-cards" className="nav-link">
                 My Cards
               </Nav.Link>
-              <Nav.Link as={NavLink} to="/reserved-cards" className="nav-link">
-                Reserved Cards
+              <Nav.Link as={NavLink} to="/dashboard" className="nav-link">
+                dashboard
               </Nav.Link>
               <Nav.Link as={NavLink} to="/contact" className="nav-link">
                 Contact

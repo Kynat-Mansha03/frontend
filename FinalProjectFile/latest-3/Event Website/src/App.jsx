@@ -9,6 +9,7 @@ import "./App.css";
 import Describe from "./Front-end/Decsribe/Describe.jsx";
 import ConfirmPassChange from "./Front-end/Login_Signup/confirmPassChange.jsx";
 import ResetPassword from "./Front-end/Login_Signup/Reset.jsx";
+import Dashboard from "./Front-end/api/dashboard.jsx";
 
 //created a routing path into the application
 //calling the header which uses the link to navigate to the different pages through route paths
@@ -27,6 +28,7 @@ function App() {
             <Route path="/describe" element={<Describe />} />
             <Route path="/confirmPassChange" element={<ConfirmPassChange />} />
             <Route path="/reset" element={<ResetPassword />} />
+            <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </div>
         <Footer />

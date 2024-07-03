@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../api/dashboard.css"; // Import your CSS file here
+import "./dashboard.css"; // Import your CSS file here
 
 const Dashboard = () => {
   const [username, setUsername] = useState("");
